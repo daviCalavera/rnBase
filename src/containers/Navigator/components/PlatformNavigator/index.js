@@ -1,9 +1,14 @@
 import React from 'react';
-import {Button, Platform} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Platform} from 'react-native';
+
+//INFO - Switch to Platform specific Navigator:
+const Navigator = Platform.select({
+  android: () => require('../DrawerNavigator').default,
+  ios: () => require('../TabNavigator').default,
+})();
 
 function PlatformNavigator() {
-  return <React.Fragment>{null}</React.Fragment>;
+  return <Navigator />;
 }
 
 export default PlatformNavigator;
